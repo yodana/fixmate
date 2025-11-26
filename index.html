@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixmate - Snap. Book. Fixed.</title>
+    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter --><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        html { font-family: 'Inter', sans-serif; }
+
+        /* Parallax Effect for the Hero section */
+        .hero-bg {
+            background-image: url('https://images.unsplash.com/photo-1587560037166-f8d29b2b5f7e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw4fHxtYWludGVuYW5jZXxlbnwwfHx8fDE3MTc0MTg0Njh8MA&ixlib=rb-4.0.3&q=80&w=1920');
+            background-attachment: fixed; /* Parallax magic */
+            background-size: cover;
+            background-position: center center;
+            position: relative;
+            overflow: hidden; 
+        }
+        /* Overlay for readable text */
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2; /* Ensures content is above the overlay */
+        }
+
+        /* Styles for sections with background image and overlay */
+        .section-bg-image {
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .section-bg-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7); /* Default dark overlay */
+            z-index: 1;
+        }
+        .section-bg-image.light-overlay::before {
+            background: rgba(0, 0, 0, 0.5); /* Lighter overlay */
+            z-index: 1; /* Keep it above the background image */
+        }
+        .section-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Custom Animations */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .animate-fadeInScale {
+            animation: fadeInScale 1s ease-out forwards;
+        }
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-slideInUp {
+            animation: slideInUp 0.8s ease-out forwards;
+        }
+
+        /* Initially hide animated elements */
+        .animated-item {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Hero Section with Parallax Effect -->
+    <header class="hero-bg text-white flex items-center justify-center min-h-screen py-16">
+        <div class="hero-content text-center max-w-4xl px-4 animated-item animate-fadeInScale" style="animation-delay: 0.2s;">
+            <h1 class="text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight mb-6 drop-shadow-lg leading-tight">
+                Snap. Book. <span class="text-blue-400">Fixed.</span>
+            </h1>
+            <p class="text-xl sm:text-2xl lg:text-3xl font-light mb-10 drop-shadow-md">
+                Maintenance made simple, fast, and hassle-free. Your solution for impeccable service.
+            </p>
+            <!-- Removed the Contact Us button since the contact form is removed -->
+        </div>
+    </header>
+
+    <!-- Services Section - Your Problem, Our Solution -->
+    <section class="py-20 md:py-28 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animated-item animate-slideInUp" style="animation-delay: 0.4s;">
+                <h2 class="text-4xl font-extrabold text-gray-900 sm:text-5xl mb-4">
+                    Your Maintenance Issues, <span class="text-blue-600">Simplified.</span>
+                </h2>
+                <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
+                    Whether it's an unexpected leak, a frustrating power outage, or a simple repair, Fixmate is here for you.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                <!-- Service 1: Plumbing -->
+                <div class="bg-gradient-to-br from-blue-50 via-white to-gray-50 p-8 rounded-2xl shadow-xl border border-blue-100 transform hover:scale-[1.02] transition duration-300 maintenance-card animated-item animate-slideInUp" style="animation-delay: 0.6s;">
+                    <img src="img/plumber.jpg" alt="Plumbing Repair" class="w-full h-48 object-cover rounded-xl mb-6 shadow-md">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3 flex items-center">
+                        <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                        Plumbing & Leaks
+                    </h3>
+                    <p class="text-gray-700 leading-relaxed">Fast response for all plumbing emergencies. From dripping faucets to water damage, our experts are here.</p>
+                </div>
+
+                <!-- Service 2: Electrical -->
+                <div class="bg-gradient-to-br from-blue-50 via-white to-gray-50 p-8 rounded-2xl shadow-xl border border-blue-100 transform hover:scale-[1.02] transition duration-300 maintenance-card animated-item animate-slideInUp" style="animation-delay: 0.8s;">
+                    <img src="img/electricity.jpg" alt="Electrical Repair" class="w-full h-48 object-cover rounded-xl mb-6 shadow-md">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3 flex items-center">
+                        <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        Electrical & Outages
+                    </h3>
+                    <p class="text-gray-700 leading-relaxed">Diagnostics and repair of electrical problems, compliance upgrades, and secure installations.</p>
+                </div>
+
+                <!-- Service 3: General Repair/Handyman -->
+                <div class="bg-gradient-to-br from-blue-50 via-white to-gray-50 p-8 rounded-2xl shadow-xl border border-blue-100 transform hover:scale-[1.02] transition duration-300 maintenance-card animated-item animate-slideInUp" style="animation-delay: 1s;">
+                    <img src="img/maintenance.jpg" alt="General Repair" class="w-full h-48 object-cover rounded-xl mb-6 shadow-md">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3 flex items-center">
+                        <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                        Handyman & Repairs
+                    </h3>
+                    <p class="text-gray-700 leading-relaxed">Minor works, furniture assembly, and other general repair tasks for your convenience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- "How It Works" Section -->
+    <section class="py-20 md:py-28 bg-gray-900 text-white section-bg-image light-overlay" style="background-image: url('https://images.unsplash.com/photo-1587573752763-88229124a919?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxNXx8dG9vbHN8ZW58MHx8fHwxNzE3NDI2MzY1fDA&ixlib=rb-4.0.3&q=80&w=1920');">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-content">
+            <div class="text-center mb-16 animated-item animate-slideInUp" style="animation-delay: 1.2s;">
+                <h2 class="text-4xl font-extrabold text-white sm:text-5xl mb-4">
+                    Our <span class="text-blue-400">3 Simple Steps</span> Process
+                </h2>
+                <p class="mt-4 text-xl text-gray-300 max-w-3xl mx-auto">
+                    Get your repair done in the blink of an eye. That's the power of <span class="font-bold text-blue-300">Snap. Book. Fixed.</span>
+                </p>
+            </div>
+
+            <!-- Steps -->
+            <div class="relative grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+                <!-- Connecting Line (desktop only) -->
+                <div class="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-blue-500 transform -translate-y-1/2 mx-12"></div>
+
+                <!-- Step 1: Snap -->
+                <div class="text-center z-10 p-6 bg-gray-800 rounded-2xl shadow-2xl border-b-4 border-blue-500 animated-item animate-slideInUp" style="animation-delay: 1.4s;">
+                    <div class="w-28 h-28 flex items-center justify-center rounded-full bg-blue-600 mx-auto mb-6 text-4xl font-extrabold shadow-lg text-white">
+                        <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white mb-3">Snap.</h3>
+                    <p class="text-gray-300 leading-relaxed">Take a clear photo of the issue. Upload it and give us an instant overview.</p>
+                </div>
+
+                <!-- Step 2: Book -->
+                <div class="text-center z-10 p-6 bg-gray-800 rounded-2xl shadow-2xl border-b-4 border-blue-500 animated-item animate-slideInUp" style="animation-delay: 1.6s;">
+                    <div class="w-28 h-28 flex items-center justify-center rounded-full bg-blue-600 mx-auto mb-6 text-4xl font-extrabold shadow-lg text-white">
+                        <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2zm3-12h.01M13 16h.01"></path></svg>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white mb-3">Book.</h3>
+                    <p class="text-gray-300 leading-relaxed">Choose your preferred time slot and book a qualified professional in a few clicks.</p>
+                </div>
+
+                <!-- Step 3: Fixed -->
+                <div class="text-center z-10 p-6 bg-gray-800 rounded-2xl shadow-2xl border-b-4 border-blue-500 animated-item animate-slideInUp" style="animation-delay: 1.8s;">
+                    <div class="w-28 h-28 flex items-center justify-center rounded-full bg-blue-600 mx-auto mb-6 text-4xl font-extrabold shadow-lg text-white">
+                        <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white mb-3">Fixed.</h3>
+                    <p class="text-gray-300 leading-relaxed">The technician arrives, completes the repair, and your problem is solved. Simple and efficient!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-lg">&copy; 2025 Fixmate. All rights reserved.</p>
+            <p class="mt-3 text-md text-gray-400">Maintenance Simplified. Reliability Guaranteed. Powered by Fixmate.</p>
+            <div class="flex justify-center space-x-6 mt-6">
+                <!-- Social Icons -->
+                <a href="#" class="text-gray-400 hover:text-blue-400 transition duration-200" aria-label="Facebook">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.776-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-blue-400 transition duration-200" aria-label="Instagram">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.443 2.007a.75.75 0 00-.886 0C8.117 2.477 2.5 7.674 2.5 14c0 3.39 1.488 6.459 3.865 8.016.376.248.805.027.932-.439.113-.41.203-.961.287-1.795l-.018-.002c-.087-.665-.213-1.04-.306-1.393-.255-.951-.12-1.996.309-2.739.529-.9.842-1.272 1.34-1.892 0 0-.256-.474-.256-.474-1.928.026-3.793-1.01-4.145-3.085-.349-2.062 1.047-3.696 2.515-4.526 0 0-.585-2.052.14-2.846 0 0 1.766-.566 2.766 1.107 1.013-.284 2.08-.426 3.14-.436 1.06.01 2.127.152 3.14.436 1.002-1.673 2.766-1.107 2.766-1.107.726.794.14 2.846.14 2.846 1.468.83 2.864 2.464 2.515 4.526-.352 2.075-2.217 3.111-4.145 3.085 0 0-.256.474-.256.474.498.62.811.992 1.34 1.892.429.743.564 1.788.309 2.739-.093.353-.22.728-.306 1.393-.075.602-.162 1.096-.287 1.795-.126.466.303.687.932.439 2.377-1.557 3.865-4.626 3.865-8.016 0-6.326-5.617-11.523-10.443-11.993z" clip-rule="evenodd" /></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for "on scroll" animations (Intersection Observer)
+        document.addEventListener("DOMContentLoaded", function() {
+            const animatedItems = document.querySelectorAll(".animated-item");
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("!opacity-100"); // Set opacity to 1
+                        // Trigger the specific animation
+                        if (entry.target.classList.contains("animate-fadeInScale")) {
+                            entry.target.style.animationName = "fadeInScale";
+                        } else if (entry.target.classList.contains("animate-slideInUp")) {
+                            entry.target.style.animationName = "slideInUp";
+                        }
+                        observer.unobserve(entry.target); // Stop observing after animation
+                    }
+                });
+            }, {
+                threshold: 0.2 // Trigger when 20% of the element is visible
+            });
+
+            animatedItems.forEach(item => {
+                item.style.opacity = "0"; // Initially hide the element
+                observer.observe(item);
+            });
+
+            // The contact form submission handler was removed as requested.
+        });
+    </script>
+</body>
+</html>
